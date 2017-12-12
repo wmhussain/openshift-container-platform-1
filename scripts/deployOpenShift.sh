@@ -449,8 +449,8 @@ openshift_logging_public_master_url=master.$ROUTING:8443
 $MASTER-[0:${MASTERLOOP}]
 
 # host group for etcd
-#[etcd]
-#$MASTER-[0:${MASTERLOOP}] 
+[etcd]
+$MASTER-[0:${MASTERLOOP}] 
 
 [master0]
 $MASTER-0
