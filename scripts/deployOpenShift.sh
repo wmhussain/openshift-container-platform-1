@@ -417,10 +417,10 @@ openshift_disable_check=memory_availability,docker_image_availability
 openshift_router_selector='type=infra'
 openshift_registry_selector='type=infra'
 
-#openshift_master_cluster_method=native
-#openshift_master_cluster_hostname=$MASTERPUBLICIPHOSTNAME
-#openshift_master_cluster_public_hostname=$MASTERPUBLICIPHOSTNAME
-#openshift_master_cluster_public_vip=$MASTERPUBLICIPADDRESS
+openshift_master_cluster_method=native
+openshift_master_cluster_hostname=$MASTERPUBLICIPHOSTNAME
+openshift_master_cluster_public_hostname=$MASTERPUBLICIPHOSTNAME
+openshift_master_cluster_public_vip=$MASTERPUBLICIPADDRESS
 
 # Enable HTPasswdPasswordIdentityProvider
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'},{'name': 'AzureAD', 'login': 'true', 'challenge': 'false', 'kind': 'OpenIDIdentityProvider', 'client_id': '$AADAUTHCLIENTID', 'client_secret': '$AADAUTHCLIENTSECRET', 'extra_scopes': [], 'extra_authorize_parameters': {}, 'claims': { 'id': ['sub'], 'preferredUsername': ['unique_name'], 'name': ['unique_name'], 'email': ['unique_name']}, 'urls': {'authorize': 'https://login.microsoftonline.com/$TENANTID/oauth2/authorize', 'token': 'https://login.microsoftonline.com/$TENANTID/oauth2/token'}}]
