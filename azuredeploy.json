@@ -118,8 +118,8 @@
         }
     },
     "variables": {
-        "masterInstanceCount": 3,
-        "infraInstanceCount": 2,
+        "masterInstanceCount": 1,
+        "infraInstanceCount": 1,
         "nodeInstanceCount": 1,
         "dataDiskSize": 128,
 
@@ -127,7 +127,7 @@
         "enableLogging": "true",
         "enableCockpit": "true",
 
-        "enableAzure": "false",
+        "enableAzure": "true",
         "aadClientId": "[parameters('azureIntegrationClientId')]",
         "aadClientSecret": "[parameters('azureIntegrationClientSecret')]",
         "masterVmSize": "Standard_DS2_v2",
