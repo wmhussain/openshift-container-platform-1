@@ -194,7 +194,7 @@ cat > /home/${SUDOUSER}/setup-azure-master.yml <<EOF
   - name: restart atomic-openshift-master-api
     systemd:
       state: restarted
-      name: atomic-openshift-master-api
+      name: atomic-openshift-master
 
   - name: restart atomic-openshift-master-controllers
     systemd:
@@ -220,7 +220,7 @@ cat > /home/${SUDOUSER}/setup-azure-master.yml <<EOF
         } 
     notify:
     - restart atomic-openshift-master-api
-    - restart atomic-openshift-master-controllers
+
 
   - name: insert the azure disk config into the master
     modify_yaml:
