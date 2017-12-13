@@ -392,8 +392,8 @@ cat > /etc/ansible/hosts <<EOF
 masters
 nodes
 #etcd
-master0
-new_nodes
+#master0
+#new_nodes
 
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
@@ -407,7 +407,7 @@ openshift_use_dnsmasq=true
 openshift_master_default_subdomain=$ROUTING
 openshift_override_hostname_check=true
 osm_use_cockpit=${COCKPIT}
-os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+os_sdn_network_plugin_name='redhat/openshift-ovs-subnet'
 console_port=443
 openshift_cloudprovider_kind=azure
 osm_default_node_selector='type=app'
@@ -418,9 +418,9 @@ openshift_router_selector='type=infra'
 openshift_registry_selector='type=infra'
 
 #openshift_master_cluster_method=native
-openshift_master_cluster_hostname=$MASTERPUBLICIPHOSTNAME
-openshift_master_cluster_public_hostname=$MASTERPUBLICIPHOSTNAME
-openshift_master_cluster_public_vip=$MASTERPUBLICIPADDRESS
+#openshift_master_cluster_hostname=$MASTERPUBLICIPHOSTNAME
+#openshift_master_cluster_public_hostname=$MASTERPUBLICIPHOSTNAME
+#openshift_master_cluster_public_vip=$MASTERPUBLICIPADDRESS
 
 # Enable HTPasswdPasswordIdentityProvider
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'},{'name': 'AzureAD', 'login': 'true', 'challenge': 'false', 'kind': 'OpenIDIdentityProvider', 'client_id': '$AADAUTHCLIENTID', 'client_secret': '$AADAUTHCLIENTSECRET', 'extra_scopes': [], 'extra_authorize_parameters': {}, 'claims': { 'id': ['sub'], 'preferredUsername': ['unique_name'], 'name': ['unique_name'], 'email': ['unique_name']}, 'urls': {'authorize': 'https://login.microsoftonline.com/$TENANTID/oauth2/authorize', 'token': 'https://login.microsoftonline.com/$TENANTID/oauth2/token'}}]
@@ -446,11 +446,11 @@ openshift_logging_public_master_url=master.$ROUTING:8443
 
 # host group for masters
 [masters]
-$MASTER-[0:${MASTERLOOP}]
+$MASTER-0
 
 # host group for etcd
 [etcd]
-$MASTER-[0:${MASTERLOOP}] 
+$MASTER-0
 
 [master0]
 $MASTER-0
