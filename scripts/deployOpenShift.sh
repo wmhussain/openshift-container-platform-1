@@ -245,7 +245,7 @@ cat > /home/${SUDOUSER}/setup-azure-master.yml <<EOF
       - azure
     notify:
     - restart atomic-openshift-master-api
-    - restart atomic-openshift-master-controllers
+
 EOF
 
 # Create Azure Cloud Provider configuration Playbook for Node Config (Master Nodes)
